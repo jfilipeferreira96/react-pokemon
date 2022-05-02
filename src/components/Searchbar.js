@@ -11,8 +11,10 @@ export default function Searchbar({onSearch}) {
     }
   }
 
-  const onButtonClickHandler = () => {
-    onSearch(search);
+  const onKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      onSearch(search);
+    }
   }
 
   return (
@@ -23,11 +25,9 @@ export default function Searchbar({onSearch}) {
           type="text"
           placeholder="Search Pokemon"
           onChange={onChangeHandler}
+          onKeyDown={onKeyDown}
           className="input is-large"
         />
-      </div>
-      <div className="searchbar-btn">
-        <button onClick={onButtonClickHandler}>Search</button>
       </div>
     </div>
   );

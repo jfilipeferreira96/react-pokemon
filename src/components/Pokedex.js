@@ -18,14 +18,6 @@ export default function Pokedex({ pokemons, loading, page, totalPages, setPage }
 
     return (
         <div>
-            <div className='pokedex-header'>
-                <Pagination
-                    page={page + 1}
-                    totalPages={totalPages}
-                    onLeftClick={onLeftClickHandler}
-                    onRightClick={onRightClickHandler}
-                />
-            </div>
             {loading ? (<div>Loading...</div>) : ''}
 
             {pokemons && (
@@ -39,6 +31,14 @@ export default function Pokedex({ pokemons, loading, page, totalPages, setPage }
                     </div>    
                 </div>
             )}
+            <div className='pagination-container'>
+                <Pagination
+                    page={page + 1}
+                    totalPages={totalPages}
+                    onLeftClick={onLeftClickHandler}
+                    onRightClick={onRightClickHandler}
+                />
+            </div>
         </div>
   )
 }

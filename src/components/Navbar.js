@@ -6,22 +6,16 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-menu">
-        <div className="navbar-start">
-          <div className="navbar-item">
-            <h1>Pokédex</h1>
-          </div>
-        </div>
+      <h1>Pokédex</h1>
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
-              <a href="/" className="button is-primary">
+              <button className="button is-primary poke-btn">
                 <strong>{ favoritePokemons.length } Favorites</strong>
-              </a>
+              </button>
             </div>
           </div>
         </div>
-      </div>
     </nav>
   );
 }

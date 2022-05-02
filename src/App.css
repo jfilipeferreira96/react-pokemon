@@ -71,7 +71,7 @@
   background:#ED6EC7;
 }
 .fighting{
-  background:#FFFFFF;
+  background:#D04164;
 }
 .fire{
   background: #FD7D24;
@@ -86,7 +86,7 @@
   background:#62B957;
 }
 .ground{
-  background:#FFFFFF;
+  background:#DD7748;
 }
 .ice{
   background:#61CEC0;
@@ -145,10 +145,19 @@
   height: 210px;
   width: 210px;
 }
+
 .navbar h1{
   font-weight: bold;
   font-size: 50px;
   color: rgb(23, 23, 27);
+}
+.poke-btn{
+  background-color: #EA5D60!important;
+  box-shadow: 0px 2px 5px rgba(234, 93, 96, 0.3)!important;
+  border-radius: 10px!important;
+}
+.searchbar{
+  position: relative;
 }
 
 .searchbar input {
@@ -180,12 +189,12 @@
 .searchbar svg{
   width: 20px;
   height: 20px;
-  position: relative;
+  position: absolute;
   margin-right: 10px;
   color: rgb(116, 116, 118);
   opacity: 0.8;
   z-index: 100;
-  top: 58px;
+  top: 20px;
   left: 20px;
 }
 
