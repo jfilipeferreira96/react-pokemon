@@ -111,6 +111,9 @@
 }
 
 /* ---------------------- */
+.column{
+  padding: 0.75rem 0.75rem 1.5rem 0.75rem!important;
+}
 .type{
   padding: 8px;
   border-radius: 5px;
@@ -301,6 +304,8 @@ span{
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
 .pokemon-heart-btn {
@@ -312,12 +317,38 @@ span{
   align-items: center;
 }
 
-.not-found-text {
+.not-found{
   text-align: center;
-  font-size: 1.25rem;
   padding: 20px;
+  font-size: 2rem;
+}
+.not-found h1{
+  margin-bottom: 1rem;
 }
 
+.pagination-next,
+.pagination-previous{
+  background: #F2F2F2!important;
+  border-radius: 10px!important;
+  padding: 20px 30px!important;
+  font-weight: 700;
+  border: 2px solid transparent!important;
+}
+.pagination-next:hover,
+.pagination-previous:hover{
+  border-color: #b5b5b5;
+}
+.pagination-next:focus,
+.pagination-previous:focus{
+  border-color: #b5b5b5!important;
+}
+
+.pagination-link{
+  background: #F2F2F2!important;
+  border-radius: 10px!important;
+  font-weight: 700;
+  border: 2px solid transparent!important;
+}
 
 @media only screen and (max-width: 500px) {
   .pokemon-image {

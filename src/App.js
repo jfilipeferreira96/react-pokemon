@@ -20,7 +20,7 @@ function App() {
   const [pokemonList, setPokemonList] = useState([])
   const [favorites, setFavorites] = useState([])
 
-  const itemsPerPage = 25;
+  const itemsPerPage = 24;
 
   const fetchPokemons = async () => {
     try {
@@ -54,7 +54,8 @@ function App() {
   }
 
   const onSearchHandler = async (pokemon) => {
-    if(!pokemon) {
+    if (!pokemon) {
+      setNotFound(false)
       return fetchPokemons();
     }
 
@@ -81,11 +82,8 @@ function App() {
     >
       <div className="section">
         <Navbar />
-        <Searchbar onSearch={onSearchHandler}/>
-        {notFound && (
-          <div className="not-found-text">Not found.</div>
-        )}
-        <Pokedex pokemons={pokemonList} loading={loading} page={page} totalPages={totalPages} setPage={setPage} />
+        <Searchbar onSearch={onSearchHandler} />
+        <Pokedex pokemons={pokemonList} loading={loading} page={page} totalPages={totalPages} setPage={setPage} notFound={notFound} />
       </div>
     </FavoriteProvider>
   );
