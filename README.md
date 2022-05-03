@@ -1,7 +1,7 @@
 # Pokédex App
 
 <p align="center">
-  <img alt="Layout da aplicação" width="100%" src="./.github/app.png" />
+  <img alt="Layout da aplicação" width="100%" src="./.github/app.PNG" />
 </p>
 
 ## 💻 About
@@ -18,6 +18,6 @@ The goal of this project was to use ReactJs to consume the following API https:/
 
 - [x] **Search Pokémon**: Method to filter the pokémons by their name.
 
-- [ ] **Selecionar Pokémon**: Criar uma página na aplicação com mais detalhes sobre o pokémon escolhido.
+- [ ] **Pokémon Individual Page**: Individual pokémon page contaning their stats, etc...
 
 - [x] **Favorite Pokémon**: Section contain the user favorite pokémons using local storage.
