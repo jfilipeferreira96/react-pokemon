@@ -6,7 +6,7 @@
 
 ## 💻 About
 
-You can check this project at:
+You can check this project at: https://jfilipeferreira96.github.io/react-pokemon/
 
 This project was inspired by this [artist's visual app](https://www.behance.net/gallery/95727849/Pokdex-App) - [Figma](https://www.figma.com/file/THLxZSlOoUYMZrjFg0Kl1M/Pok%C3%A9dex?node-id=18241%3A2789)
 
