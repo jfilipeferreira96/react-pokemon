@@ -2,7 +2,6 @@ import React, {useContext} from 'react'
 import FavoriteContext from '../contexts/favoritesContext';
 
 export default function Pokemon({ pokemon }) {
-    console.log(pokemon);
     const {favoritePokemons, updateFavoritePokemons} = useContext(FavoriteContext)
 
     const onHeartClick = () => {
@@ -30,7 +29,7 @@ export default function Pokemon({ pokemon }) {
                     <div className="types">
                         {pokemon.types.map((type) => (
                             <div className={`type ${type.type.name}`} key={type.type.name} >
-                                <img src={`../img/${type.type.name}.svg`} alt="type" />
+                                <img src={`./img/${type.type.name}.svg`} alt="type" />
                                 <span className="pokemon-type-text">
                                     {type.type.name}
                                 </span>
