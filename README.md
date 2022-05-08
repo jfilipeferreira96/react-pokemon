@@ -16,8 +16,12 @@ The goal of this project was to use ReactJs to consume the following API https:/
 
 - [x] **Pokémon listing**: List the pokémon using the REST API.
 
-- [x] **Search Pokémon**: Method to filter the pokémons by their name.
+- [] **Search Pokémon**: Method to filter the pokémons by their name.
 
-- [ ] **Pokémon Individual Page**: Individual pokémon page contaning their stats, etc...
+- [x] **React Routes**
 
-- [x] **Favorite Pokémon**: Section contain the user favorite pokémons using local storage.
+- [x] **Pokémon Individual Page**: Individual pokémon page contaning their stats, etc...
+
+- [ ] **Favorite Pokémon**: Section contain the user favorite pokémons using local storage.
+
+- [ ] **Evolution**
