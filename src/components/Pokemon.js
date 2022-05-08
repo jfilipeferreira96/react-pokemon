@@ -22,7 +22,7 @@ export default function Pokemon({ pokemon }) {
   return (
     /* column is-one-third */
     <div className="column is-12-mobile is-12-tablet is-6-desktop is-4-fullhd ">
-      <Link to={`/pokemon/${pokemon.name}`}>
+      <Link to={`./pokemon/${pokemon.name}`}>
         <div className={`pokemon-card bg-${pokemon.types[0].type.name}`}>
           <div className="pokemon-inner-card">
             <span className="pokemon-number">#{addZerosToNumber(pokemon.id, 3)}</span>
@@ -31,7 +31,7 @@ export default function Pokemon({ pokemon }) {
             <div className="types">
               {pokemon.types.map((type) => (
                 <div key={type.type.name} className={`type ${type.type.name}`}>
-                  <img src={`./img/${type.type.name}.svg`} alt="type" />
+                  <img src={`../img/${type.type.name}.svg`} alt="type" />
                   <span className="pokemon-type-text">{type.type.name}</span>
                 </div>
               ))}
