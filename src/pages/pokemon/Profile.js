@@ -165,7 +165,7 @@ function Profile() {
                         <strong>Weaknesses</strong>
                         {speciesData[1].damage_relations.double_damage_from.map((weakness) => (
                           <div className={`small-type-icon bg-${weakness.name}`} key={weakness.name}>
-                            <img src={`./img/${weakness.name}.svg`} alt="type" />
+                            <img src={`../img/${weakness.name}.svg`} alt="type" />
                           </div>
                         ))}
                       </li>
