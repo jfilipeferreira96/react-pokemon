@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { getPokemonsList, getPokemonData, searchPokemon } from "../../api";
+import { getPokemonData, searchPokemon } from "../../api";
 import Navbar from "../../components/Navbar";
-import Searchbar from "../../components/Searchbar";
 
 //components
 import Pokedex from "../../components/Pokedex";
@@ -19,37 +18,53 @@ function Favorites() {
   const fetchPokemons = async () => {
     try {
       setLoading(true);
-      const data = await getPokemonsList(itemsPerPage, itemsPerPage * page);
-      const promises = data.results.map(async (pokemon) => {
+      const promises = favorites.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
       const results = await Promise.all(promises);
 
       setPokemonList(results);
-      setTotalPages(Math.ceil(data.count / itemsPerPage));
+      setTotalPages(Math.ceil(favorites.length / itemsPerPage));
       setLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const loadFavoritePokemon = () => {
+    const pokemons = JSON.parse(window.localStorage.getItem("favoritePokemons")) || [];
+    setFavorites(pokemons);
+  };
+
+  useEffect(() => {
+    loadFavoritePokemon();
+  }, []);
+
   useEffect(() => {
     fetchPokemons();
-  }, [page]);
+  }, [favorites, page]);
 
   return (
     <>
       <Navbar />
-      <div className="section">
-        <Pokedex
-          pokemons={pokemonList}
-          loading={loading}
-          page={page}
-          totalPages={totalPages}
-          setPage={setPage}
-          notFound={notFound}
-        />
-      </div>
+      {favorites.length > 0 && (
+        <div className="section">
+          <Pokedex
+            pokemons={pokemonList}
+            loading={loading}
+            page={page}
+            totalPages={totalPages}
+            setPage={setPage}
+            notFound={notFound}
+          />
+        </div>
+      )}
+      {favorites.length === 0 && (
+        <div className="not-found">
+          <img src="https://i.kym-cdn.com/photos/images/newsfeed/002/012/821/a64.png" alt="Error Not Found"></img>
+          <h1>Your favorites page is empty.</h1>
+        </div>
+      )}
     </>
   );
 }

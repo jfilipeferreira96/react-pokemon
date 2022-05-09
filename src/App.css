@@ -189,7 +189,7 @@
   height: 18px;
   vertical-align: text-top;
 }
-.pokemon-inner-card svg {
+.pokemon-inner-card #pokeball {
   position: absolute;
   right: 5px;
   top: 0px;
@@ -290,6 +290,8 @@
 .pokemon-card:hover {
   cursor: pointer;
   border-radius: 10px;
+  box-shadow: 0 8px 16px 3px rgb(0 0 0 / 60%);
+  transform: translateY(-3px) scale(1.05) rotateX(5deg);
 }
 .pokemon-inner-card {
   flex: 1 1 0%;
@@ -301,6 +303,26 @@
   justify-content: center;
   position: relative;
   padding-left: 30px;
+}
+.like {
+  position: absolute;
+  width: 100%;
+  top: 5px;
+  left: 5px;
+}
+.card_like {
+  width: 18px;
+}
+.svg_like {
+  position: fixed;
+  top: 6vw;
+  right: 1vw;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  width: 50px;
+  cursor: pointer;
 }
 
 .pokemon-number {

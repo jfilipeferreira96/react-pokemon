@@ -1,16 +1,6 @@
-import React, { useContext } from "react";
-import FavoriteContext from "../contexts/favoritesContext";
 import { Link } from "react-router-dom";
 
 export default function Pokemon({ pokemon }) {
-  const { favoritePokemons, updateFavoritePokemons } = useContext(FavoriteContext);
-
-  const onHeartClick = () => {
-    updateFavoritePokemons(pokemon.name);
-  };
-
-  const heart = favoritePokemons.includes(pokemon.name) ? "💗" : "🖤";
-
   const addZerosToNumber = (number, length) => {
     let num = "" + number;
     while (num.length < length) {
@@ -22,7 +12,7 @@ export default function Pokemon({ pokemon }) {
   return (
     /* column is-one-third */
     <div className="column is-12-mobile is-12-tablet is-6-desktop is-4-fullhd ">
-      <Link to={`./pokemon/${pokemon.name}`}>
+      <Link to={`/pokemon/${pokemon.name}`}>
         <div className={`pokemon-card bg-${pokemon.types[0].type.name}`}>
           <div className="pokemon-inner-card">
             <span className="pokemon-number">#{addZerosToNumber(pokemon.id, 3)}</span>
@@ -37,7 +27,7 @@ export default function Pokemon({ pokemon }) {
               ))}
             </div>
             {/* SVG OF THE POKEBALL */}
-            <svg width="75" height="75" viewBox="0 0 75 75" fill="none">
+            <svg id="pokeball" width="75" height="75" viewBox="0 0 75 75" fill="none">
               <path
                 d="M37.5 0C56.798 0 72.7167 14.361 75 32.9032H56.6974C54.6135 24.298 46.8091 17.9032 37.5 17.9032C28.1909 17.9032 20.3865 24.298 18.3026 32.9032H0C2.28333 14.361 18.202 0 37.5 0Z"
                 fill="rgb(255 255 255 / 20%)"

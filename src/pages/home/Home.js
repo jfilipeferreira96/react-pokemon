@@ -20,13 +20,13 @@ function App() {
     try {
       setLoading(true);
       const data = await getPokemonsList(itemsPerPage, itemsPerPage * page);
-      console.log(data);
+      //console.log(data);
 
       const promises = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
       const results = await Promise.all(promises);
-      console.log(results);
+      //console.log(results);
 
       setPokemonList(results);
       setTotalPages(Math.ceil(data.count / itemsPerPage));
@@ -40,10 +40,29 @@ function App() {
     fetchPokemons();
   }, [page]);
 
+  const onSearchHandler = async (pokemon) => {
+    if (!pokemon) {
+      setNotFound(false);
+      return fetchPokemons();
+    }
+
+    setLoading(true);
+    setNotFound(false);
+    const result = await searchPokemon(pokemon);
+    if (!result) {
+      setNotFound(true);
+    } else {
+      setPokemonList([result]);
+      setPage(0);
+      setTotalPages(1);
+    }
+    setLoading(false);
+  };
+
   return (
     <>
       <Navbar />
-      <Searchbar />
+      <Searchbar onSearch={onSearchHandler} />
       <div className="section">
         <Pokedex
           pokemons={pokemonList}

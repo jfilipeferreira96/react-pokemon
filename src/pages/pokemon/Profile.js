@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getPokemonData, searchPokemon } from "../../api";
+import FavoriteContext from "../../contexts/favoritesContext";
 
 function Profile() {
   let params = useParams();
@@ -8,6 +9,7 @@ function Profile() {
   const [details, setDetails] = useState({});
   const [activeTab, setActiveTab] = useState("Stats");
   const [speciesData, setSpeciesData] = useState({});
+  const { favoritePokemons, updateFavoritePokemons } = useContext(FavoriteContext);
 
   const fetchDetails = async (name) => {
     try {
@@ -44,19 +46,37 @@ function Profile() {
     return num;
   };
 
+  const isFavorite = favoritePokemons.some((favorite) => favorite.name === details.name) ? true : false;
+
+  const onHeartClick = (pokemon, id) => {
+    updateFavoritePokemons(pokemon, `https://pokeapi.co/api/v2/pokemon/${id}`);
+  };
+
   return (
     <>
       {loading && <p>loading...</p>}
       {!loading && details && (
         <div className={`profile bg-${details.types[0].type.name}`}>
           <Link to={"/"}>
-            <svg width="60" height="60" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="35" height="50" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M19.2165 9.22309H4.87986L11.1433 2.95963C11.6439 2.45907 11.6439 1.63763 11.1433 1.13707C11.0246 1.01808 10.8835 0.923686 10.7283 0.859279C10.573 0.794871 10.4065 0.761719 10.2385 0.761719C10.0704 0.761719 9.90391 0.794871 9.74864 0.859279C9.59337 0.923686 9.45233 1.01808 9.33359 1.13707L0.875351 9.59531C0.756366 9.71405 0.661968 9.85509 0.597561 10.0104C0.533153 10.1656 0.5 10.3321 0.5 10.5002C0.5 10.6683 0.533153 10.8347 0.597561 10.99C0.661968 11.1453 0.756366 11.2863 0.875351 11.405L9.33359 19.8633C9.45242 19.9821 9.59349 20.0764 9.74874 20.1407C9.904 20.205 10.0704 20.2381 10.2385 20.2381C10.4065 20.2381 10.5729 20.205 10.7282 20.1407C10.8834 20.0764 11.0245 19.9821 11.1433 19.8633C11.2621 19.7444 11.3564 19.6034 11.4207 19.4481C11.485 19.2929 11.5181 19.1265 11.5181 18.9584C11.5181 18.7904 11.485 18.624 11.4207 18.4687C11.3564 18.3134 11.2621 18.1724 11.1433 18.0535L4.87986 11.7901H19.2165C19.9224 11.7901 20.5 11.2125 20.5 10.5066C20.5 9.80066 19.9224 9.22309 19.2165 9.22309Z"
                 fill="white"
               />
             </svg>
           </Link>
+          <svg
+            onClick={() => {
+              onHeartClick(details.name, details.id);
+            }}
+            className="svg_like"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill={!isFavorite ? "white" : "rgb(189 89 89)"}
+              d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z"
+            ></path>
+          </svg>
           <div className="header_invisible">
             <h1 className={`font-${details.types[0].type.name}`}>{details.name}</h1>
           </div>
